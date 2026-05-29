@@ -1,0 +1,114 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-saffron: var(--saffron);
+  --color-saffron-deep: var(--saffron-deep);
+  --color-gold: var(--gold);
+  --color-ink: var(--ink);
+  --color-cream: var(--cream);
+  --color-border: var(--border);
+  --color-ring: var(--ring);
+  --font-display: "Fraunces", Georgia, serif;
+  --font-sans: "Plus Jakarta Sans", system-ui, sans-serif;
+  --font-sanskrit: "Tiro Devanagari Sanskrit", "Noto Serif Devanagari", serif;
+}
+
+:root {
+  --radius: 0.875rem;
+  /* warm spiritual saffron palette */
+  --background: oklch(0.985 0.014 80);          /* cream */
+  --foreground: oklch(0.22 0.04 40);             /* deep ink brown */
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.22 0.04 40);
+  --primary: oklch(0.68 0.19 45);                /* saffron */
+  --primary-foreground: oklch(0.99 0.01 80);
+  --secondary: oklch(0.94 0.03 70);              /* warm sand */
+  --secondary-foreground: oklch(0.28 0.05 40);
+  --muted: oklch(0.95 0.018 75);
+  --muted-foreground: oklch(0.48 0.04 50);
+  --accent: oklch(0.78 0.14 80);                 /* gold */
+  --accent-foreground: oklch(0.22 0.04 40);
+  --saffron: oklch(0.68 0.19 45);
+  --saffron-deep: oklch(0.55 0.18 40);
+  --gold: oklch(0.78 0.14 80);
+  --ink: oklch(0.22 0.04 40);
+  --cream: oklch(0.985 0.014 80);
+  --border: oklch(0.88 0.02 70);
+  --ring: oklch(0.68 0.19 45);
+  --destructive: oklch(0.577 0.245 27.325);
+}
+
+@layer base {
+  * { border-color: var(--color-border); }
+  html { scroll-behavior: smooth; }
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    background-image:
+      radial-gradient(circle at 10% 0%, color-mix(in oklab, var(--saffron) 10%, transparent) 0%, transparent 40%),
+      radial-gradient(circle at 90% 100%, color-mix(in oklab, var(--gold) 12%, transparent) 0%, transparent 40%);
+  }
+  h1, h2, h3 { font-family: var(--font-display); letter-spacing: -0.02em; }
+}
+
+@utility container-x {
+  width: 100%;
+  margin-inline: auto;
+  padding-inline: 1.25rem;
+  max-width: 1200px;
+}
+
+@utility btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.875rem 1.5rem;
+  border-radius: 9999px;
+  font-weight: 600;
+  background: linear-gradient(135deg, var(--saffron), var(--saffron-deep));
+  color: var(--primary-foreground);
+  box-shadow: 0 12px 30px -10px color-mix(in oklab, var(--saffron) 60%, transparent);
+  transition: transform .2s ease, box-shadow .2s ease;
+}
+@utility btn-primary-hover {
+  transform: translateY(-1px);
+  box-shadow: 0 18px 36px -10px color-mix(in oklab, var(--saffron) 70%, transparent);
+}
+
+@utility btn-ghost {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.875rem 1.5rem;
+  border-radius: 9999px;
+  font-weight: 600;
+  background: var(--card);
+  color: var(--foreground);
+  border: 1px solid var(--border);
+  transition: background .2s ease;
+}
